@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "@react-three/drei": "9.48.4",
+    "@react-three/fiber": "8.10.1",
+    "@types/react": "18.0.26",
+    "@types/react-dom": "18.0.10",
+    "@types/three": "0.140.0",
+    "glsl-map": "1.0.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "three": "0.140.0",
+    "three-stdlib": "2.21.5"
+  },
+  "scripts": {
+    "watch": "concurrently    'tsc --pretty -w --preserveWatchOutput'    'pug -w -o ./build/ src/'    'stylus -w -o ./build/ -m src/'    'live-server  --ignore=\"*.map\" ./build/'    'node build.mjs'    -c 'red,green,yellow,blue.magenta.cyan.white.gray' -n 'tsc,pug,styl,server,esbuild'"
+  },
+  "devDependencies": {
+    "@undesigned/esbuild-plugin-glslify": "1.0.0",
+    "concurrently": "7.6.0",
+    "esbuild": "0.17.4",
+    "glslify": "7.1.1",
+    "live-server": "1.2.2",
+    "pug": "3.0.2",
+    "stylus": "0.59.0"
+  }
+}

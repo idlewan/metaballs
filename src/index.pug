@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+
+    link(rel="stylesheet" href="index.css")
+    link(rel="icon" href="favicon.png")
+
+    meta(name="viewport" content="width=device-width, user-scalable=no")
+
+    title WebGL Metaballs - Erwan Ameil
+  body
+    noscript
+      p This page requires Javascript and WebGL. Please enable them in your
+        browser or use a modern browser.
+    p.error#no-webgl.hidden.
+      This page requires WebGL. WebGL should be enabled by default on modern
+      browsers like Firefox or Chrome.
+    p.error#generic-error.hidden.
+      An error occured. Please reload the page. If the problem subsists,
+      please contact the website's author to report it.
+
+    #root
+
+    script(src="index.js")
