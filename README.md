@@ -1,6 +1,7 @@
 # WebGL metaballs
 
 This is a WebGL experiment to play with metaballs visualisation.
+It is visible online at https://ameil.me/metaballs.
 
 Metaballs are organic-looking objects (usually spheres) that can blend together
 when in close proximity to form a continuous surface, which appear blobby.
