@@ -1,11 +1,9 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import * as THREE from 'three';
-import { Vector3, Mesh } from 'three';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, shaderMaterial, Grid } from '@react-three/drei';
+import { OrbitControls, Grid } from '@react-three/drei';
 
-import { Spheres, ShaderObject } from './metaballs';
+import { MetaballsQuad } from './metaballs';
 
 // check webgl support. If not supported, show error message, otherwise init
 try {
@@ -35,8 +33,7 @@ function init() {
             <pointLight position={[10, 10, 10]} />
             <directionalLight position={[0, 0, 5]} color="red" />
 
-            <ShaderObject />
-            <Spheres />
+            <MetaballsQuad />
 
             {/* // useful objects to debug if unsure how camera/things are moving/updating
                 // notably autoRotate

@@ -9,11 +9,8 @@ uniform mat4 projectionMatrix;
 #define MINIMUM_HIT_DISTANCE 0.001
 #define MAXIMUM_TRACE_DISTANCE 100.0
 
-#define CHARGES_MAX 12
 struct Charge {
     vec3 center;
-    //vec3 velocity;
-    //vec3 acceleration;
 };
 uniform Charge charges[CHARGES_MAX];
 
