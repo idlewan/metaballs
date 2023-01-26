@@ -1,5 +1,5 @@
 import {
-    Mesh, Vector2, Vector3,
+    Mesh, Vector2, Vector3, Matrix4,
     ShaderMaterial, ShaderMaterialParameters,
 } from 'three';
 import React, { useRef,  useMemo } from 'react';
@@ -17,6 +17,7 @@ export function MetaballsQuad() {
     const matRef = useRef<ShaderMaterial>(null);
     let iResolution = useMemo(() => new Vector2(1920, 1080), []);
     let cameraPosition = useMemo(() => new Vector3(), []);
+    let inverseMatrix = useMemo(() => new Matrix4(), []);
 
     let { size, camera } = useThree();
     iResolution.set(size.width, size.height);
@@ -30,6 +31,7 @@ export function MetaballsQuad() {
             iResolution: { value: iResolution },
             charges: { value: charges },
             cameraPosition: { value: cameraPosition },
+            inverseMatrix: { value: inverseMatrix },
         }}
     );
 
@@ -37,11 +39,16 @@ export function MetaballsQuad() {
         const uniforms = uniformRef.current!.uniforms!;
         uniforms.time.value += delta;
         uniforms.cameraPosition.value.copy(state.camera.position);
+
+        inverseMatrix.copy(state.camera.projectionMatrix);
+        // multiply by viewMatrix
+        inverseMatrix.multiply(state.camera.matrixWorldInverse);
+        inverseMatrix.invert();
+
         moveChargesLinear(charges);
     });
 
     return <>
-        <Spheres charges={charges}/>
         <mesh ref={mesh}>
             <planeGeometry  args={[2,2]}/>
             <shaderMaterial
@@ -54,5 +61,6 @@ export function MetaballsQuad() {
                 defines={{CHARGES_MAX: charges.length}}
             />
         </mesh>
+        <Spheres charges={charges}/>
     </>;
 }

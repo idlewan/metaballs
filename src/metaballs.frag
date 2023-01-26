@@ -3,7 +3,7 @@
 uniform float time;
 uniform vec2 iResolution;
 
-uniform mat4 projectionMatrix;
+uniform mat4 inverseMatrix;
 
 #define MAX_MARGHING_STEPS 96
 #define MINIMUM_HIT_DISTANCE 0.001
@@ -135,7 +135,7 @@ void main() {
     vec2 UV = ( gl_FragCoord.xy / iResolution.xy ) * 2. - 1.;
 
     vec3 ray_direction = normalize(
-        inverse(projectionMatrix*viewMatrix)*vec4(UV, 1., 1.)
+        inverseMatrix*vec4(UV, 1., 1.)
     ).xyz;
 
     raymarch(cameraPosition, ray_direction);
