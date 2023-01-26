@@ -16,7 +16,8 @@ using a technique called ray marching.
 
 ## Building
 
-Install dependencies first (you need `node` and `npm` on your machine):
+Install dependencies first (you need `tsc` (the typescript compiler),
+`node` and `npm` on your machine):
 ```bash
 $ npm i
 ```
